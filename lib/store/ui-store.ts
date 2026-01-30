@@ -1,13 +1,13 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
 interface DialogState {
-    deleteDialog: {
-        isOpen: boolean;
-        itemId: string | null;
-        itemName: string | null;
-    };
-    openDeleteDialog: (id: string, name: string) => void;
-    closeDeleteDialog: () => void;
+	deleteDialog: {
+		isOpen: boolean;
+		itemId: string | null;
+		itemName: string | null;
+	};
+	openDeleteDialog: (id: string, name: string) => void;
+	closeDeleteDialog: () => void;
 }
 
 /**
@@ -16,25 +16,25 @@ interface DialogState {
  * Server data is managed by React Query
  */
 export const useDialogStore = create<DialogState>((set) => ({
-    deleteDialog: {
-        isOpen: false,
-        itemId: null,
-        itemName: null,
-    },
-    openDeleteDialog: (id, name) =>
-        set({
-            deleteDialog: {
-                isOpen: true,
-                itemId: id,
-                itemName: name,
-            },
-        }),
-    closeDeleteDialog: () =>
-        set({
-            deleteDialog: {
-                isOpen: false,
-                itemId: null,
-                itemName: null,
-            },
-        }),
+	deleteDialog: {
+		isOpen: false,
+		itemId: null,
+		itemName: null,
+	},
+	openDeleteDialog: (id, name) =>
+		set({
+			deleteDialog: {
+				isOpen: true,
+				itemId: id,
+				itemName: name,
+			},
+		}),
+	closeDeleteDialog: () =>
+		set({
+			deleteDialog: {
+				isOpen: false,
+				itemId: null,
+				itemName: null,
+			},
+		}),
 }));
